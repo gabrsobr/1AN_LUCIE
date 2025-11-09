@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pour nos 1 an 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent: #ff6b9a;
+      --accent-2: #ffc7d6;
+      --bg-1: #0f1724;
+      --bg-2: #1b2130;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(255,107,154,0.08), transparent 10%),
+                  radial-gradient(900px 400px at 90% 80%, rgba(255,199,214,0.06), transparent 12%),
+                  linear-gradient(135deg,var(--bg-1),var(--bg-2));
+      color: #fff;
+      display:flex;align-items:center;justify-content:center;padding:32px;
+    }
+
+    .card{
+      width:100%;max-width:900px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:48px;backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      position:relative;overflow:hidden;
+    }
+
+    .heart{position:absolute;opacity:0.12;font-size:48px;transform:translate(-50%,-50%)}
+    .h1{left:10%;top:20%;animation:float 8s ease-in-out infinite}
+    .h2{left:80%;top:10%;font-size:64px;animation:float 10s ease-in-out infinite}
+    .h3{left:30%;top:85%;font-size:36px;animation:float 9s ease-in-out infinite}
+
+    @keyframes float{
+      0%{transform:translate(-50%,-50%) translateY(0) rotate(0)}
+      50%{transform:translate(-50%,-50%) translateY(-18px) rotate(6deg)}
+      100%{transform:translate(-50%,-50%) translateY(0) rotate(0)}
+    }
+
+    .headline{
+      font-family:'Playfair Display', serif;font-weight:700;font-size:44px;line-height:1.05;text-align:center;color:var(--accent-2);
+      text-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+      margin-bottom:18px;
+    }
+    .subtext{
+      text-align:center;font-size:20px;color:#f5f5f7;max-width:760px;margin:0 auto 28px;padding:0 12px;opacity:0.95;
+    }
+    .cta{
+      display:flex;gap:12px;justify-content:center;margin-top:18px;
+    }
+    .btn{
+      background:linear-gradient(90deg,var(--accent),#ff917e);border:none;padding:12px 20px;border-radius:12px;font-weight:600;cursor:pointer;
+      box-shadow:0 8px 20px rgba(255,107,154,0.15), inset 0 -2px 0 rgba(255,255,255,0.06);
+      transition: transform 0.2s;
+      color:#fff;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn:hover{transform: scale(1.05)}
+    .muted{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#eee;padding:10px 16px;border-radius:12px}
+
+    .romantic-line{display:block;text-align:center;margin-top:28px;color:rgba(255,255,255,0.7);font-size:14px}
+
+    /* full-screen password overlay */
+    .overlay{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.45));backdrop-filter: blur(6px);z-index:50;
+    }
+    .lockbox{
+      background:rgba(255,255,255,0.04);padding:28px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.6);min-width:320px;text-align:center;color:#fff;
+    }
+    .lockbox input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);margin-top:12px;background:transparent;color:#fff}
+    .lockbox button{margin-top:12px;padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),#ff917e);cursor:pointer}
+    .shake{animation:shake .6s}
+    @keyframes shake{0%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}100%{transform:translateX(0)}}
+
+    @media (max-width:520px){
+      .headline{font-size:28px}
+      .card{padding:28px}
+      .lockbox{min-width:260px}
+    }
+  </style>
+</head>
+<body>
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-label="Accès protégé">
+    <div id="lockbox" class="lockbox">
+      <h2>Entrer le mot de passe</h2>
+      <p style="opacity:0.9;font-size:14px;margin-top:6px">(format : JJ/MM/AAAA)</p>
+      <input id="pwd" type="password" placeholder="JJ/MM/AAAA" aria-label="Mot de passe" />
+      <div style="display:flex;gap:8px;justify-content:center">
+        <button onclick="checkPwd()">Entrer</button>
+        <button onclick="hint()" class="muted">Indice</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content" style="visibility:hidden;opacity:0;transition:opacity 0.4s">
+    <div class="card" role="main" aria-label="Carte anniversaire">
+      <div class="heart h1">❤</div>
+      <div class="heart h2">❤</div>
+      <div class="heart h3">❤</div>
+
+      <h1 class="headline">Pour nos 1 an —</h1>
+      <p class="subtext">Pour nos 1 an, retournons à nos origines</p>
+
+      <div class="cta">
+        <a id="airbnbLink" class="btn" href="https://www.airbnb.fr/rooms/628065689026784938?adults=1&check_in=2026-01-02&check_out=2026-01-04&search_mode=regular_search&source_impression_id=p3_1762680925_P3LSXy6YZgF9m4Oh&previous_page_section_name=1000" target="_blank">Oui, allons-y ✨</a>
+      </div>
+      <p class="romantic-line">Cette fois on fera autre chose que rester dans le lit</p>
+      <p class="romantic-line">je t'aime</p>
+    </div>
+  </div>
+
+  <script>
+    const CORRECT = '15/11/2024';
+    function checkPwd(){
+      const input = document.getElementById('pwd');
+      const val = input.value.trim();
+      const lockbox = document.getElementById('lockbox');
+      if(val === CORRECT){
+        document.getElementById('overlay').style.display = 'none';
+        const c = document.getElementById('content');
+        c.style.visibility = 'visible';
+        c.style.opacity = '1';
+      } else {
+        lockbox.classList.remove('shake');
+        void lockbox.offsetWidth;
+        lockbox.classList.add('shake');
+        input.value = '';
+      }
+    }
+    function hint(){
+      alert('Indice : c\'est la date où quelque chose d\'important s\'est passé pour vous.');
+    }
+    function share(){
+      const text = "Pour nos 1 an, retournons où on s'est vus il y a un an";
+      if (navigator.share){
+        navigator.share({title: 'Pour nos 1 an', text}).catch(()=>{});
+      } else {
+        prompt('Copie ce message pour le partager :', text);
+      }
+    }
+    document.getElementById('pwd').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') checkPwd();
+    });
+  </script>
+</body>
+</html>
